@@ -61,6 +61,13 @@ public class TreningGrupa implements GenerickiEntitet {
     }
 
     public void setNazivGrupe(String nazivGrupe) {
+        if (nazivGrupe == null) {
+            throw new NullPointerException("Naziv grupe ne smije da bude null!");
+
+        }
+        if (!nazivGrupe.matches("[a-zA-Z]+")) {
+            throw new IllegalArgumentException("Naziv grupe ne smije da sadrzi brojeve!");
+        }
         this.nazivGrupe = nazivGrupe;
     }
 
@@ -69,6 +76,10 @@ public class TreningGrupa implements GenerickiEntitet {
     }
 
     public void setKapacitet(int kapacitet) {
+        if (kapacitet < 0) {
+            throw new IllegalArgumentException("Kapacitet ne smije da bude negativan!");
+
+        }
         this.kapacitet = kapacitet;
     }
 
@@ -169,13 +180,13 @@ public class TreningGrupa implements GenerickiEntitet {
 
     @Override
     public GenerickiEntitet getEntity(ResultSet rs) throws SQLException {
-        return new TreningGrupa(rs.getInt(getAlijas() + ".grupa_id"), rs.getString(getAlijas() + 
-                ".naziv_grupe"), rs.getInt(getAlijas() + ".kapacitet"), (Trener) trener.getEntity(rs));
+        return new TreningGrupa(rs.getInt(getAlijas() + ".grupa_id"), rs.getString(getAlijas()
+                + ".naziv_grupe"), rs.getInt(getAlijas() + ".kapacitet"), (Trener) trener.getEntity(rs));
     }
 
     @Override
     public GenerickiEntitet getJoinEntity(ResultSet rs) throws SQLException {
-        return new TreningGrupa(rs.getInt("tg2.grupa_id"), rs.getString("tg2.naziv_grupe"), 
+        return new TreningGrupa(rs.getInt("tg2.grupa_id"), rs.getString("tg2.naziv_grupe"),
                 rs.getInt("tg2.kapacitet"), (Trener) trener.getJoinEntity(rs));
     }
 
