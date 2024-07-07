@@ -149,6 +149,12 @@ public class TreningUtakmicaTest {
     }
 
     @Test
+    public void testSetTim1Null() {
+        assertThrows(java.lang.NullPointerException.class, () -> tu.setTim1(null));
+
+    }
+
+    @Test
     public void testSetTim2() {
         tu.setTim2(new TreningGrupa(1, "Kadeti", 20,
                 new Trener(1, "Igor", "Duljaj", "1234567890345", 5)));
@@ -162,6 +168,12 @@ public class TreningUtakmicaTest {
         assertEquals("Duljaj", tu.getTim2().getTrener().getPrezime());
         assertEquals("1234567890345", tu.getTim2().getTrener().getJmbg());
         assertEquals(5, tu.getTim2().getTrener().getGodineIskustva());
+    }
+
+    @Test
+    public void testSetTim2Null() {
+        assertThrows(java.lang.NullPointerException.class, () -> tu.setTim2(null));
+
     }
 
     @Test

@@ -87,7 +87,7 @@ public class TreningUtakmica implements GenerickiEntitet {
     }
 
     public void setBrojGolovaTim1(int brojGolovaTim1) {
-        if(brojGolovaTim1<0){
+        if (brojGolovaTim1 < 0) {
             throw new IllegalArgumentException("Broj golova tim1 ne smije da bude negativan broj!");
         }
 
@@ -95,12 +95,12 @@ public class TreningUtakmica implements GenerickiEntitet {
     }
 
     public int getBrojGolovaTikm2() {
-        
+
         return brojGolovaTikm2;
     }
 
     public void setBrojGolovaTikm2(int brojGolovaTikm2) {
-        if(brojGolovaTikm2<0){
+        if (brojGolovaTikm2 < 0) {
             throw new IllegalArgumentException("Broj golova tim2 ne smije da bude negativan broj!");
         }
         this.brojGolovaTikm2 = brojGolovaTikm2;
@@ -111,6 +111,9 @@ public class TreningUtakmica implements GenerickiEntitet {
     }
 
     public void setTim1(TreningGrupa tim1) {
+        if (tim1 == null) {
+            throw new NullPointerException("Tim1 ne smije da bude null!");
+        }
         this.tim1 = tim1;
     }
 
@@ -119,6 +122,9 @@ public class TreningUtakmica implements GenerickiEntitet {
     }
 
     public void setTim2(TreningGrupa tim2) {
+        if (tim2 == null) {
+            throw new NullPointerException("Tim2 ne smije da bude null!");
+        }
         this.tim2 = tim2;
     }
 
@@ -135,7 +141,7 @@ public class TreningUtakmica implements GenerickiEntitet {
     }
 
     public void setRedniBroj(int redniBroj) {
-        if(redniBroj<0){
+        if (redniBroj < 0) {
             throw new IllegalArgumentException("Redni broj utakmice ne moze da bude negativan");
         }
         this.redniBroj = redniBroj;

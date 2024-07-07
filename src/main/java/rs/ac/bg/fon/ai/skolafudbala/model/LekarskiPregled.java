@@ -55,6 +55,9 @@ public class LekarskiPregled implements GenerickiEntitet {
     }
 
     public void setFudbaler(Fudbaler fudbaler) {
+        if (fudbaler == null) {
+            throw new NullPointerException("Fudbaler ne moze da bude null!");
+        }
         this.fudbaler = fudbaler;
     }
 
@@ -63,6 +66,9 @@ public class LekarskiPregled implements GenerickiEntitet {
     }
 
     public void setVisina(double visina) {
+        if (visina < 0) {
+            throw new IllegalArgumentException("Visina ne smije da bude manja od 0!");
+        }
         this.visina = visina;
     }
 
@@ -71,6 +77,9 @@ public class LekarskiPregled implements GenerickiEntitet {
     }
 
     public void setTezina(double tezina) {
+        if (tezina < 0) {
+            throw new IllegalArgumentException("Tezina ne smije da bude manja od 0!");
+        }
         this.tezina = tezina;
     }
 
@@ -79,6 +88,9 @@ public class LekarskiPregled implements GenerickiEntitet {
     }
 
     public void setStanje(String stanje) {
+        if (stanje == null) {
+            throw new NullPointerException("Stanje ne moze da bude null!");
+        }
         this.stanje = stanje;
     }
 
@@ -87,6 +99,12 @@ public class LekarskiPregled implements GenerickiEntitet {
     }
 
     public void setDatum(Date datum) {
+        if (datum == null) {
+            throw new NullPointerException("Datum ne moze da bude null!");
+        }
+        if (datum.after(new Date())) {
+            throw new IllegalArgumentException("Datum mora biti iz prošlosti");
+        }
         this.datum = datum;
     }
 
