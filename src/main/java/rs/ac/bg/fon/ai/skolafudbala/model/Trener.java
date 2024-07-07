@@ -51,6 +51,12 @@ public class Trener implements GenerickiEntitet {
     }
 
     public void setIme(String ime) {
+        if (ime == null) {
+            throw new NullPointerException("Ime ne smije da bude null!");
+        }
+        if (!ime.matches("[a-zA-Z]+") || !Character.isUpperCase(ime.charAt(0))) {
+            throw new IllegalArgumentException("Ime mora da sadrzi samo slova i prvo slovo mora da bude veliko!");
+        }
         this.ime = ime;
     }
 
@@ -59,6 +65,12 @@ public class Trener implements GenerickiEntitet {
     }
 
     public void setPrezime(String prezime) {
+        if (prezime == null) {
+            throw new NullPointerException("Prezime ne smije da bude null!");
+        }
+        if (!prezime.matches("[a-zA-Z]+") || !Character.isUpperCase(prezime.charAt(0))) {
+            throw new IllegalArgumentException("Prezime mora da sadrzi samo slova i prvo slovo mora da bude veliko!");
+        }
         this.prezime = prezime;
     }
 
@@ -67,6 +79,15 @@ public class Trener implements GenerickiEntitet {
     }
 
     public void setJmbg(String jmbg) {
+        if (jmbg == null) {
+            throw new NullPointerException("JMBG ne smije da bude null!");
+        }
+        if (!jmbg.matches("\\d+")) {
+            throw new IllegalArgumentException("JMBG mora da sadrzi samo cifre!");
+        }
+        if (jmbg.length() != 13) {
+            throw new IllegalArgumentException("JMBG mora da ima tacno 13 cifara!");
+        }
         this.jmbg = jmbg;
     }
 
@@ -75,6 +96,9 @@ public class Trener implements GenerickiEntitet {
     }
 
     public void setGodineIskustva(int godineIskustva) {
+        if(godineIskustva<0){
+            throw new IllegalArgumentException("Godine iskustva moraju da budu pozitivan broj!");
+        }
         this.godineIskustva = godineIskustva;
     }
 

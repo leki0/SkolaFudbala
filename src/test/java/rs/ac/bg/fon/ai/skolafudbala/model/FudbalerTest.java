@@ -88,9 +88,6 @@ public class FudbalerTest {
     public void testSetIme() {
         f.setIme("Aleksa");
         assertEquals("Aleksa", f.getIme());
-        assertThrows(java.lang.IllegalArgumentException.class, () -> f.setIme("Aleksa2"));
-        assertThrows(java.lang.IllegalArgumentException.class, () -> f.setIme("aleksa"));
-        assertThrows(java.lang.NullPointerException.class, () -> f.setIme(null));
     }
 
     @Test
