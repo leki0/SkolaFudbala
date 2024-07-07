@@ -1,5 +1,3 @@
-
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -10,8 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Objects;
-
-
 
 /**
  *
@@ -78,22 +74,49 @@ public class Fudbaler implements GenerickiEntitet {
     }
 
     public void setIme(String ime) {
+        if (ime == null) {
+            throw new NullPointerException("Ime ne smije da bude null!");
+        }
+        if (!ime.matches("[a-zA-Z]+") || !Character.isUpperCase(ime.charAt(0))) {
+            throw new IllegalArgumentException("Ime mora da sadrzi samo slova i prvo slovo mora da bude veliko!");
+        }
         this.ime = ime;
     }
 
     public void setPrezime(String prezime) {
+        if (prezime == null) {
+            throw new NullPointerException("Prezime ne smije da bude null!");
+        }
+        if (!prezime.matches("[a-zA-Z]+") || !Character.isUpperCase(prezime.charAt(0))) {
+            throw new IllegalArgumentException("Prezime mora da sadrzi samo slova i prvo slovo mora da bude veliko!");
+        }
         this.prezime = prezime;
     }
 
     public void setJmbg(String jmbg) {
+        if (jmbg == null) {
+            throw new NullPointerException("JMBG ne smije da bude null!");
+        }
+        if (!jmbg.matches("\\d+")) {
+            throw new IllegalArgumentException("JMBG mora da sadrzi samo cifre!");
+        }
+        if (jmbg.length() != 13) {
+            throw new IllegalArgumentException("JMBG mora da ima tacno 13 cifara!");
+        }
         this.jmbg = jmbg;
     }
 
     public void setPozicija(String pozicija) {
+        if (pozicija == null) {
+            throw new NullPointerException("Pozicija ne smije da bude null!");
+        }
         this.pozicija = pozicija;
     }
 
     public void setTreningGrupa(TreningGrupa treningGrupa) {
+        if (treningGrupa == null) {
+            throw new NullPointerException("Trening grupa ne smije da bude null!");
+        }
         this.treningGrupa = treningGrupa;
     }
 
@@ -102,6 +125,12 @@ public class Fudbaler implements GenerickiEntitet {
     }
 
     public void setDatumRodjenja(Date datumRodjenja) {
+        if (datumRodjenja == null) {
+            throw new NullPointerException("Datum rodjenja ne smije da bude null!");
+        }
+        if (!datumRodjenja.before(new Date())) {
+            throw new IllegalArgumentException("Datum rodjenja mora da bude datum u proslosti!");
+        }
         this.datumRodjenja = datumRodjenja;
     }
 
@@ -211,7 +240,7 @@ public class Fudbaler implements GenerickiEntitet {
     @Override
     public GenerickiEntitet getJoinEntity(ResultSet rs) throws SQLException {
         return new Fudbaler(rs.getInt("f.fudbaler_id"), rs.getString("f.ime"), rs.getString("f.prezime"),
-                rs.getString("f.jmbg"), rs.getString("f.pozicija"), (TreningGrupa) treningGrupa.getEntity(rs), 
+                rs.getString("f.jmbg"), rs.getString("f.pozicija"), (TreningGrupa) treningGrupa.getEntity(rs),
                 new java.util.Date(rs.getDate("f.datum_rodjenja").getTime()));
     }
 
