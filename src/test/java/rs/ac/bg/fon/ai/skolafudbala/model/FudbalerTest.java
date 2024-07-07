@@ -55,30 +55,26 @@ public class FudbalerTest {
     @Test
     void testFudbalerParam() {
         Date datumRodj = new Date();
-        f = new Fudbaler("Aleksa", "Stancic", "1805001749036", "Krilo", new TreningGrupa(), datumRodj);
+        f = new Fudbaler(2,"Aleksa", "Stancic", "1805001749036", "Krilo",
+                new TreningGrupa(1, "Kadeti", 20,
+                        new Trener(1, "Igor", "Duljaj", "1234567890345", 5)), datumRodj);
 
         assertNotNull(f);
+        assertEquals(2, f.getFudbalerId());
         assertEquals("Aleksa", f.getIme());
         assertEquals("Stancic", f.getPrezime());
         assertEquals("1805001749036", f.getJmbg());
         assertEquals("Krilo", f.getPozicija());
-        assertEquals(new TreningGrupa(), f.getTreningGrupa());
         assertEquals(datumRodj, f.getDatumRodjenja());
-    }
 
-    @Test
-    void testFudbalerParamID() {
-        Date datumRodj = new Date();
-        Fudbaler f1 = new Fudbaler(2, "Aleksa", "Stancic", "1805001749036", "Krilo", new TreningGrupa(), datumRodj);
-
-        assertNotNull(f1);
-        assertEquals(2, f1.getFudbalerId());
-        assertEquals("Aleksa", f1.getIme());
-        assertEquals("Stancic", f1.getPrezime());
-        assertEquals("1805001749036", f1.getJmbg());
-        assertEquals("Krilo", f1.getPozicija());
-        assertEquals(new TreningGrupa(), f1.getTreningGrupa());
-        assertEquals(datumRodj, f1.getDatumRodjenja());
+        assertEquals(1, f.getTreningGrupa().getGrupaId());
+        assertEquals("Kadeti", f.getTreningGrupa().getNazivGrupe());
+        assertEquals(20, f.getTreningGrupa().getKapacitet());
+        assertEquals(1, f.getTreningGrupa().getTrener().getTrenerId());
+        assertEquals("Igor", f.getTreningGrupa().getTrener().getIme());
+        assertEquals("Duljaj", f.getTreningGrupa().getTrener().getPrezime());
+        assertEquals("1234567890345", f.getTreningGrupa().getTrener().getJmbg());
+        assertEquals(5, f.getTreningGrupa().getTrener().getGodineIskustva());
     }
 
     /**
@@ -175,8 +171,16 @@ public class FudbalerTest {
      */
     @Test
     public void testSetTreningGrupa() {
-        f.setTreningGrupa(new TreningGrupa());
-        assertEquals(new TreningGrupa(), f.getTreningGrupa());
+        f.setTreningGrupa(new TreningGrupa(1, "Kadeti", 20,
+                        new Trener(1, "Igor", "Duljaj", "1234567890345", 5)));
+        assertEquals(1, f.getTreningGrupa().getGrupaId());
+        assertEquals("Kadeti", f.getTreningGrupa().getNazivGrupe());
+        assertEquals(20, f.getTreningGrupa().getKapacitet());
+        assertEquals(1, f.getTreningGrupa().getTrener().getTrenerId());
+        assertEquals("Igor", f.getTreningGrupa().getTrener().getIme());
+        assertEquals("Duljaj", f.getTreningGrupa().getTrener().getPrezime());
+        assertEquals("1234567890345", f.getTreningGrupa().getTrener().getJmbg());
+        assertEquals(5, f.getTreningGrupa().getTrener().getGodineIskustva());
     }
 
     @Test
