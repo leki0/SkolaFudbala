@@ -37,6 +37,8 @@ import rs.ac.bg.fon.ai.skolafudbala.repozitorijum.db.impl.RepozitorijumImpl;
 import java.util.ArrayList;
 import java.util.List;
 import rs.ac.bg.fon.ai.skolafudbala.model.LekarskiPregled;
+import rs.ac.bg.fon.ai.skolafudbala.model.TipTreninga;
+import rs.ac.bg.fon.ai.skolafudbala.operacije.UcitajListuTipovaTreninga;
 import rs.ac.bg.fon.ai.skolafudbala.operacije.ZapamtiPregled;
 
 /**
@@ -320,6 +322,17 @@ public class Controller {
             throw new Exception("Lekarski pregled nije zapamćena!");
         } else {
             return id;
+        }
+    }
+
+    public List<TipTreninga> ucitajListuTipova() throws Exception {
+        ApstraktnaSistemskaOperacija ao = new UcitajListuTipovaTreninga();
+        ao.izvrsi(new TipTreninga());
+        List<TipTreninga> listaTipova = ((UcitajListuTipovaTreninga) ao).getListaTipova();
+        if (listaTipova.size() == 0) {
+            throw new Exception("Tipovi treninga nisu pronađeni!");
+        } else {
+            return listaTipova;
         }
     }
 

@@ -38,6 +38,7 @@ import rs.ac.bg.fon.ai.skolafudbala.komunikacija.ServerskiOdgovor;
 import rs.ac.bg.fon.ai.skolafudbala.model.Fudbaler;
 import rs.ac.bg.fon.ai.skolafudbala.model.Korisnik;
 import rs.ac.bg.fon.ai.skolafudbala.model.LekarskiPregled;
+import rs.ac.bg.fon.ai.skolafudbala.model.TipTreninga;
 import rs.ac.bg.fon.ai.skolafudbala.model.Trener;
 import rs.ac.bg.fon.ai.skolafudbala.model.TreningGrupa;
 import rs.ac.bg.fon.ai.skolafudbala.model.TreningUtakmica;
@@ -192,6 +193,10 @@ public class ObradaKlijentskogZahtjeva extends Thread {
                             LekarskiPregled pregledInsert = (LekarskiPregled) klijentskiZahtjev.getObjekat();
                             long pregledId = Controller.getInstance().zapamtiPregled(pregledInsert);
                             serverskiOdgovor = new ServerskiOdgovor(pregledId, null);
+                            break;
+                        case UCITAJ_LISTU_TIPOVA_TRENINGA:
+                            List<TipTreninga> listaTipova = Controller.getInstance().ucitajListuTipova();
+                            serverskiOdgovor = new ServerskiOdgovor(listaTipova, null);
                             break;
 
                     }
