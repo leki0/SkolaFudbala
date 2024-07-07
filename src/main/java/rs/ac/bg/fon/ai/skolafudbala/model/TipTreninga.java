@@ -42,6 +42,9 @@ public class TipTreninga implements GenerickiEntitet {
     }
 
     public void setNazivTipa(String nazivTipa) {
+        if (nazivTipa == null) {
+            throw new NullPointerException("Naziv tipa ne smije da bude null!");
+        }
         this.nazivTipa = nazivTipa;
     }
 
@@ -73,7 +76,7 @@ public class TipTreninga implements GenerickiEntitet {
 
     @Override
     public String toString() {
-        return "TipTreninga{" + "tipId=" + tipId + ", nazivTipa=" + nazivTipa + '}';
+        return "NazivTipa=" + nazivTipa;
     }
 
     @Override
