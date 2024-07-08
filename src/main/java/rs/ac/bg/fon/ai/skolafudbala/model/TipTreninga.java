@@ -76,7 +76,7 @@ public class TipTreninga implements GenerickiEntitet {
 
     @Override
     public String toString() {
-        return "NazivTipa=" + nazivTipa;
+        return nazivTipa;
     }
 
     @Override
@@ -106,7 +106,7 @@ public class TipTreninga implements GenerickiEntitet {
 
     @Override
     public String getJoinText() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return "";
     }
 
     @Override
@@ -121,12 +121,12 @@ public class TipTreninga implements GenerickiEntitet {
 
     @Override
     public GenerickiEntitet getEntity(ResultSet rs) throws SQLException {
-        return new TipTreninga(Integer.parseInt(rs.getString("tt.tip_id")), rs.getString("r.naziv_tipa"));
+        return new TipTreninga(Integer.parseInt(rs.getString("tt.tip_id")), rs.getString("tt.naziv_tipa"));
     }
 
     @Override
     public GenerickiEntitet getJoinEntity(ResultSet rs) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new TipTreninga(rs.getInt(getAlijas() + ".tip_id"), rs.getString(getAlijas() + ".naziv_tipa"));
     }
 
     @Override

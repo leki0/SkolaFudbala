@@ -5,7 +5,6 @@
 package rs.ac.bg.fon.ai.skolafudbala.forme;
 
 import java.io.IOException;
-import rs.ac.bg.fon.ai.skolafudbala.enums.TipTreninga;
 import rs.ac.bg.fon.ai.skolafudbala.klijent.Klijent;
 import rs.ac.bg.fon.ai.skolafudbala.model.Fudbaler;
 import rs.ac.bg.fon.ai.skolafudbala.model.Raspored;
@@ -21,8 +20,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-
-
+import rs.ac.bg.fon.ai.skolafudbala.model.TipTreninga;
 
 /**
  *
@@ -287,7 +285,7 @@ public class UnosIzmjenaTreningGrupeForma extends javax.swing.JFrame {
                                 .addComponent(jButtonOdustani, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jButtonIzbaciTabelaRasp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabelUnosRasporeda, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,7 +432,8 @@ public class UnosIzmjenaTreningGrupeForma extends javax.swing.JFrame {
                 String validanFormat = validirajRasporedFormat(tipTreninga, datumOd, datumDo);
                 if (validanFormat.equals("")) {
                     try {
-                        Raspored r = new Raspored(null, formater.parse(datumOd), formater.parse(datumDo), tipTreninga.toString());
+                        Raspored r;
+                        r = new Raspored(null, formater.parse(datumOd), formater.parse(datumDo), tipTreninga);
                         listaRasporeda.add(r);
                         ModelTabeleRaspored mtr = new ModelTabeleRaspored(listaRasporeda);
                         jTableRaspored.setModel(mtr);
@@ -708,10 +707,11 @@ public class UnosIzmjenaTreningGrupeForma extends javax.swing.JFrame {
     }
 
     private void popuniComboBox(int i, Trener trener) throws Exception {
-
+        List<TipTreninga> listaTipova=new ArrayList<>();
         List<Trener> listaTrenera = new ArrayList<>();
         listaTrenera = Klijent.getInstance().ucitajListuTrenera();
-        jComboBoxTipTreninga.setModel(new DefaultComboBoxModel<>(TipTreninga.values()));
+        listaTipova=Klijent.getInstance().ucitajListuTipova();
+        //jComboBoxTipTreninga.setModel(new DefaultComboBoxModel<>(TipTreninga.values()));
         jComboBoxTipTreninga.setSelectedIndex(-1);
 
         if (i == 0) {
@@ -724,6 +724,18 @@ public class UnosIzmjenaTreningGrupeForma extends javax.swing.JFrame {
                 jComboBoxTrener.addItem(t);
             }
             jComboBoxTrener.setSelectedItem(trener);
+        }
+        
+        if (i == 0) {
+            for (TipTreninga tt : listaTipova) {
+                jComboBoxTipTreninga.addItem(tt);
+            }
+            jComboBoxTrener.setSelectedIndex(-1);
+        } else {
+            for (TipTreninga tt : listaTipova) {
+                jComboBoxTipTreninga.addItem(tt);
+            }
+            jComboBoxTrener.setSelectedItem(-1);
         }
 
     }

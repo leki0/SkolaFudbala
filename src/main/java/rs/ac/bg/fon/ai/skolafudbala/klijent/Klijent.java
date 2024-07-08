@@ -15,10 +15,10 @@ import rs.ac.bg.fon.ai.skolafudbala.komunikacija.ServerskiOdgovor;
 import rs.ac.bg.fon.ai.skolafudbala.model.Fudbaler;
 import rs.ac.bg.fon.ai.skolafudbala.model.Korisnik;
 import rs.ac.bg.fon.ai.skolafudbala.model.LekarskiPregled;
+import rs.ac.bg.fon.ai.skolafudbala.model.TipTreninga;
 import rs.ac.bg.fon.ai.skolafudbala.model.Trener;
 import rs.ac.bg.fon.ai.skolafudbala.model.TreningGrupa;
 import rs.ac.bg.fon.ai.skolafudbala.model.TreningUtakmica;
-
 
 /**
  *
@@ -97,8 +97,8 @@ public class Klijent {
         }
 
     }
-    
-     public long zapamtiPregled(LekarskiPregled lp) throws Exception {
+
+    public long zapamtiPregled(LekarskiPregled lp) throws Exception {
         KlijentskiZahtjev kz = new KlijentskiZahtjev(Operacija.DODAJ_LEKARSKI_PREGLED, lp);
         posiljalac.posaljiPoruku(kz);
         ServerskiOdgovor so = (ServerskiOdgovor) primalac.primiPoruku();
@@ -324,6 +324,17 @@ public class Klijent {
         ServerskiOdgovor so = (ServerskiOdgovor) primalac.primiPoruku();
         if (so.getException() == null) {
             return (List<TreningUtakmica>) so.getRezultat();
+        } else {
+            throw so.getException();
+        }
+    }
+
+    public List<TipTreninga> ucitajListuTipova() throws Exception {
+        KlijentskiZahtjev kz = new KlijentskiZahtjev(Operacija.UCITAJ_LISTU_TIPOVA_TRENINGA, null);
+        posiljalac.posaljiPoruku(kz);
+        ServerskiOdgovor so = (ServerskiOdgovor) primalac.primiPoruku();
+        if (so.getException() == null) {
+            return (List<TipTreninga>) so.getRezultat();
         } else {
             throw so.getException();
         }

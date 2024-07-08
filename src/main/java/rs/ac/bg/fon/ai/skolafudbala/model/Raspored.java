@@ -19,12 +19,12 @@ public class Raspored implements GenerickiEntitet {
     private TreningGrupa grupa = new TreningGrupa();
     private Date datumOd;
     private Date datumDo;
-    private String tipTreninga;
+    private TipTreninga tipTreninga = new TipTreninga();
 
     public Raspored() {
     }
 
-    public Raspored(int rasporedId, TreningGrupa grupa, Date datumOd, Date datumDo, String tipTreninga) {
+    public Raspored(int rasporedId, TreningGrupa grupa, Date datumOd, Date datumDo, TipTreninga tipTreninga) {
         this.rasporedId = rasporedId;
         this.grupa = grupa;
         this.datumOd = datumOd;
@@ -32,7 +32,7 @@ public class Raspored implements GenerickiEntitet {
         this.tipTreninga = tipTreninga;
     }
 
-    public Raspored(TreningGrupa grupa, Date datumOd, Date datumDo, String tipTreninga) {
+    public Raspored(TreningGrupa grupa, Date datumOd, Date datumDo, TipTreninga tipTreninga) {
         this.rasporedId = rasporedId;
         this.grupa = grupa;
         this.datumOd = datumOd;
@@ -72,22 +72,22 @@ public class Raspored implements GenerickiEntitet {
         this.datumDo = datumDo;
     }
 
-    public String getTipTreninga() {
+    public TipTreninga getTipTreninga() {
         return tipTreninga;
     }
 
-    public void setTipTreninga(String tipTreninga) {
+    public void setTipTreninga(TipTreninga tipTreninga) {
         this.tipTreninga = tipTreninga;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + (int) (this.rasporedId ^ (this.rasporedId >>> 32));
-        hash = 67 * hash + Objects.hashCode(this.grupa);
-        hash = 67 * hash + Objects.hashCode(this.datumOd);
-        hash = 67 * hash + Objects.hashCode(this.datumDo);
-        hash = 67 * hash + Objects.hashCode(this.tipTreninga);
+        int hash = 3;
+        hash = 53 * hash + (int) (this.rasporedId ^ (this.rasporedId >>> 32));
+        hash = 53 * hash + Objects.hashCode(this.grupa);
+        hash = 53 * hash + Objects.hashCode(this.datumOd);
+        hash = 53 * hash + Objects.hashCode(this.datumDo);
+        hash = 53 * hash + Objects.hashCode(this.tipTreninga);
         return hash;
     }
 
@@ -106,13 +106,16 @@ public class Raspored implements GenerickiEntitet {
         if (this.rasporedId != other.rasporedId) {
             return false;
         }
-        if (!Objects.equals(this.tipTreninga, other.tipTreninga)) {
+        if (!Objects.equals(this.grupa, other.grupa)) {
             return false;
         }
         if (!Objects.equals(this.datumOd, other.datumOd)) {
             return false;
         }
-        return Objects.equals(this.datumDo, other.datumDo);
+        if (!Objects.equals(this.datumDo, other.datumDo)) {
+            return false;
+        }
+        return Objects.equals(this.tipTreninga, other.tipTreninga);
     }
 
     @Override
@@ -127,12 +130,12 @@ public class Raspored implements GenerickiEntitet {
 
     @Override
     public String getInsertColumns() {
-        return "raspored_id,grupa_id,trening_tip,datum_od,datum_do";
+        return "raspored_id,grupa_id,tip_treninga_id,datum_od,datum_do";
     }
 
     @Override
     public String getInsertValues() {
-        return "'" + rasporedId + "','" + grupa.getObjID() + "','" + tipTreninga + "','" + new java.sql.Date(datumOd.getTime()) + "','" + new java.sql.Date(datumDo.getTime()) + "'";
+        return "'" + rasporedId + "','" + grupa.getObjID() + "','" + tipTreninga.getObjID() + "','" + new java.sql.Date(datumOd.getTime()) + "','" + new java.sql.Date(datumDo.getTime()) + "'";
     }
 
     @Override
@@ -147,7 +150,7 @@ public class Raspored implements GenerickiEntitet {
 
     @Override
     public String getJoinText() {
-        return "JOIN trening_grupa tg ON r.grupa_id=tg.grupa_id JOIN trener t ON tg.trener_id=t.trener_id";
+        return "JOIN trening_grupa tg ON r.grupa_id = tg.grupa_id JOIN trener t ON tg.trener_id = t.trener_id JOIN tip_treninga tt ON r.tip_treninga_id = tt.tip_id";
     }
 
     @Override
@@ -162,12 +165,12 @@ public class Raspored implements GenerickiEntitet {
 
     @Override
     public GenerickiEntitet getEntity(ResultSet rs) throws SQLException {
-        return new Raspored(Integer.parseInt(rs.getString("r.raspored_id")), (TreningGrupa) grupa.getEntity(rs), new java.util.Date(rs.getDate("r.datum_od").getTime()), new java.util.Date(rs.getDate("r.datum_do").getTime()), rs.getString("r.trening_tip"));
+        return new Raspored(Integer.parseInt(rs.getString("r.raspored_id")), (TreningGrupa) grupa.getEntity(rs), new java.util.Date(rs.getDate("r.datum_od").getTime()), new java.util.Date(rs.getDate("r.datum_do").getTime()), (TipTreninga) tipTreninga.getEntity(rs));
     }
 
     @Override
     public GenerickiEntitet getJoinEntity(ResultSet rs) throws SQLException {
-        return new Raspored(Integer.parseInt(rs.getString("r.raspored_id")), (TreningGrupa) grupa.getEntity(rs), new java.util.Date(rs.getDate("r.datum_od").getTime()), new java.util.Date(rs.getDate("r.datum_do").getTime()), rs.getString("r.trening_tip"));
+        return new Raspored(Integer.parseInt(rs.getString("r.raspored_id")), (TreningGrupa) grupa.getEntity(rs), new java.util.Date(rs.getDate("r.datum_od").getTime()), new java.util.Date(rs.getDate("r.datum_do").getTime()), (TipTreninga) tipTreninga.getEntity(rs));
     }
 
     @Override
