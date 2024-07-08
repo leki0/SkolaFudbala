@@ -55,7 +55,7 @@ public class FudbalerTest {
     @Test
     void testFudbalerParam() {
         Date datumRodj = new Date();
-        f = new Fudbaler(2,"Aleksa", "Stancic", "1805001749036", "Krilo",
+        f = new Fudbaler(2, "Aleksa", "Stancic", "1805001749036", "Krilo",
                 new TreningGrupa(1, "Kadeti", 20,
                         new Trener(1, "Igor", "Duljaj", "1234567890345", 5)), datumRodj);
 
@@ -172,7 +172,7 @@ public class FudbalerTest {
     @Test
     public void testSetTreningGrupa() {
         f.setTreningGrupa(new TreningGrupa(1, "Kadeti", 20,
-                        new Trener(1, "Igor", "Duljaj", "1234567890345", 5)));
+                new Trener(1, "Igor", "Duljaj", "1234567890345", 5)));
         assertEquals(1, f.getTreningGrupa().getGrupaId());
         assertEquals("Kadeti", f.getTreningGrupa().getNazivGrupe());
         assertEquals(20, f.getTreningGrupa().getKapacitet());
@@ -235,19 +235,15 @@ public class FudbalerTest {
 
     @ParameterizedTest
     @CsvSource({
-        "Pera, Peric, Pera, Peric, true",
-        "Pera, Peric, Mika, Peric, false",
-        "Pera, Peric, Pera, Mikic, false",
-        "Pera, Peric, Mika, Mikic, false"
+        "1804001134995,1804001134995, true",
+        "1804001134995,1804001134996,false"
     })
-    void testEqualsObjectSveOk(String ime1, String prezime1,
-            String ime2, String prezime2, boolean eq) {
-        f.setIme(ime1);
-        f.setPrezime(prezime1);
+    void testEqualsObjectSveOk(String jmbg1, String jmbg2,
+            boolean eq) {
+        f.setJmbg(jmbg1);
 
         Fudbaler f2 = new Fudbaler();
-        f2.setIme(ime2);
-        f2.setPrezime(prezime2);
+        f2.setJmbg(jmbg2);
 
         assertEquals(eq, f.equals(f2));
     }

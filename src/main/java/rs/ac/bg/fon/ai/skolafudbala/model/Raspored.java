@@ -53,6 +53,9 @@ public class Raspored implements GenerickiEntitet {
     }
 
     public void setGrupa(TreningGrupa grupa) {
+        if (grupa == null) {
+            throw new NullPointerException("Trening grupa ne smije da bude null!");
+        }
         this.grupa = grupa;
     }
 
@@ -61,6 +64,12 @@ public class Raspored implements GenerickiEntitet {
     }
 
     public void setDatumOd(Date datumOd) {
+        if (datumOd == null) {
+            throw new NullPointerException("Datum od ne smije da bude null!");
+        }
+        if (datumOd.before(new Date()) || datumOd.equals(new Date())) {
+            throw new IllegalArgumentException("Datum od mora da bude trenutak u buducnosti!");
+        }
         this.datumOd = datumOd;
     }
 
@@ -69,6 +78,12 @@ public class Raspored implements GenerickiEntitet {
     }
 
     public void setDatumDo(Date datumDo) {
+        if (datumDo == null) {
+            throw new NullPointerException("Datum do ne smije da bude null!");
+        }
+        if (datumDo.before(new Date()) || datumDo.equals(new Date())) {
+            throw new IllegalArgumentException("Datum do mora da bude trenutak u buducnosti!");
+        }
         this.datumDo = datumDo;
     }
 
@@ -77,6 +92,9 @@ public class Raspored implements GenerickiEntitet {
     }
 
     public void setTipTreninga(TipTreninga tipTreninga) {
+        if (tipTreninga == null) {
+            throw new NullPointerException("Tip treninga od ne smije da bude null!");
+        }
         this.tipTreninga = tipTreninga;
     }
 

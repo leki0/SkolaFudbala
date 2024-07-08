@@ -171,19 +171,15 @@ public class TrenerTest {
 
     @ParameterizedTest
     @CsvSource({
-        "Pera, Peric, Pera, Peric, true",
-        "Pera, Peric, Mika, Peric, false",
-        "Pera, Peric, Pera, Mikic, false",
-        "Pera, Peric, Mika, Mikic, false"
+        "1804001134995,1804001134995, true",
+        "1804001134995,1804001134996,false"
     })
-    void testEqualsObjectSveOk(String ime1, String prezime1,
-            String ime2, String prezime2, boolean eq) {
-        t.setIme(ime1);
-        t.setPrezime(prezime1);
+    void testEqualsObjectSveOk(String jmbg1, String jmbg2,
+            boolean eq) {
+        t.setJmbg(jmbg1);
 
         Trener t2 = new Trener();
-        t2.setIme(ime2);
-        t2.setPrezime(prezime2);
+        t2.setJmbg(jmbg2);
 
         assertEquals(eq, t.equals(t2));
     }
