@@ -47,6 +47,9 @@ public class StatistikaFudbalera implements GenerickiEntitet {
     }
 
     public void setFudbaler(Fudbaler fudbaler) {
+        if (fudbaler == null) {
+            throw new NullPointerException("Fudbaler ne smije da bude null!");
+        }
         this.fudbaler = fudbaler;
     }
 
@@ -63,6 +66,9 @@ public class StatistikaFudbalera implements GenerickiEntitet {
     }
 
     public void setBrojGolova(int brojGolova) {
+        if (brojGolova < 0) {
+            throw new IllegalArgumentException("Broj golova ne smije da bude negativan broj!");
+        }
         this.brojGolova = brojGolova;
     }
 
@@ -71,6 +77,9 @@ public class StatistikaFudbalera implements GenerickiEntitet {
     }
 
     public void setBrojAsistencija(int brojAsistencija) {
+        if (brojAsistencija < 0) {
+            throw new IllegalArgumentException("Broj asistencija ne smije da bude negativan broj!");
+        }
         this.brojAsistencija = brojAsistencija;
     }
 
@@ -79,6 +88,9 @@ public class StatistikaFudbalera implements GenerickiEntitet {
     }
 
     public void setTreningUtakmica(TreningUtakmica treningUtakmica) {
+        if (treningUtakmica == null) {
+            throw new NullPointerException("Trening utakmica ne smije da bude null!");
+        }
         this.treningUtakmica = treningUtakmica;
     }
 
@@ -87,6 +99,9 @@ public class StatistikaFudbalera implements GenerickiEntitet {
     }
 
     public void setBrojPromasenihSuteva(int brojPromasenihSuteva) {
+        if (brojPromasenihSuteva < 0) {
+            throw new IllegalArgumentException("Broj promasenih suteva ne smije da bude negativan broj!");
+        }
         this.brojPromasenihSuteva = brojPromasenihSuteva;
     }
 
@@ -95,6 +110,9 @@ public class StatistikaFudbalera implements GenerickiEntitet {
     }
 
     public void setBrojProvedenihMinuta(int brojProvedenihMinuta) {
+        if (brojProvedenihMinuta < 0) {
+            throw new IllegalArgumentException("Broj provedenih minuta ne smije da bude negativan broj!");
+        }
         this.brojProvedenihMinuta = brojProvedenihMinuta;
     }
 
@@ -103,6 +121,9 @@ public class StatistikaFudbalera implements GenerickiEntitet {
     }
 
     public void setPrvaPostava(Boolean prvaPostava) {
+        if (prvaPostava == null) {
+            throw new NullPointerException("Prva postava ne smije da bude null!");
+        }
         this.prvaPostava = prvaPostava;
     }
 
@@ -111,6 +132,9 @@ public class StatistikaFudbalera implements GenerickiEntitet {
     }
 
     public void setBrojOdbrana(int brojOdbrana) {
+        if (brojOdbrana < 0) {
+            throw new IllegalArgumentException("Broj odbrana ne smije da bude negativan broj!");
+        }
         this.brojOdbrana = brojOdbrana;
     }
 
@@ -119,6 +143,9 @@ public class StatistikaFudbalera implements GenerickiEntitet {
     }
 
     public void setBrojPrimljenihGolova(int brojPrimljenihGolova) {
+        if (brojPrimljenihGolova < 0) {
+            throw new IllegalArgumentException("Broj primljenih ne smije da bude negativan broj!");
+        }
         this.brojPrimljenihGolova = brojPrimljenihGolova;
     }
 
@@ -127,6 +154,9 @@ public class StatistikaFudbalera implements GenerickiEntitet {
     }
 
     public void setOcjena(double ocjena) {
+        if (ocjena < 0) {
+            throw new IllegalArgumentException("Ocjena ne smije da bude negativan broj!");
+        }
         this.ocjena = ocjena;
     }
 

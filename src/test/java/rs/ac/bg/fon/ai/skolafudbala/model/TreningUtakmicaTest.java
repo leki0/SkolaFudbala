@@ -60,7 +60,7 @@ public class TreningUtakmicaTest {
 
         assertEquals(1, tu.getTreningUtakmicaId());
         assertEquals(1, tu.getRedniBroj());
-        assertEquals(new Date(), new Date());
+        assertEquals(new Date(), tu.getDatum());
         assertEquals(1, tu.getBrojGolovaTim1());
         assertEquals(1, tu.getBrojGolovaTikm2());
 
