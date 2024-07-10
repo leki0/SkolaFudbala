@@ -21,7 +21,7 @@ public class ZapamtiPregled extends ApstraktnaSistemskaOperacija{
 
     @Override
     protected void preduslovi(Object odo) throws Exception {
-        if (odo == null && !(odo instanceof LekarskiPregled)) {
+        if (odo == null || !(odo instanceof LekarskiPregled)) {
             throw new Exception("VALIDACIJA! Vrijednost parametra nije validna!");
         }
     }

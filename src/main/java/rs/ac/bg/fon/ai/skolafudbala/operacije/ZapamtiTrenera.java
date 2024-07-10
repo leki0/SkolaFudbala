@@ -24,7 +24,7 @@ public class ZapamtiTrenera extends ApstraktnaSistemskaOperacija {
 
     @Override
     protected void preduslovi(Object odo) throws Exception {
-        if (odo == null && !(odo instanceof Trener)) {
+        if (odo == null || !(odo instanceof Trener)) {
             throw new Exception("VALIDACIJA! Vrijednost parametra nije validna!");
         }
         List<Trener> listaTrenera = repozitorijum.getAll(new Trener());

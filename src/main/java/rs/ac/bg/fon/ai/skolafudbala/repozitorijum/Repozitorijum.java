@@ -7,24 +7,22 @@ package rs.ac.bg.fon.ai.skolafudbala.repozitorijum;
 import rs.ac.bg.fon.ai.skolafudbala.model.GenerickiEntitet;
 import java.util.List;
 
-
-
 /**
  *
  * @author Korisnik
  */
 public interface Repozitorijum<T, K> {
 
-    public List<T> getAll(T odo);
+    public List<T> getAll(T odo) throws Exception;
 
-    public T getWhere(T odo);
+    public T getWhere(T odo) throws Exception;
 
     public long add(T odo) throws Exception;
 
-    public int addUpdate(T odo);
+    public int addUpdate(T odo) throws Exception;
 
-    public int delete(T odo);
+    public int delete(T odo) throws Exception;
 
-    public List<GenerickiEntitet> pretraga(T odo);
+    public List<GenerickiEntitet> pretraga(T odo) throws Exception;
 
 }

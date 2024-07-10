@@ -23,7 +23,7 @@ public class UcitajTreningGrupu extends ApstraktnaSistemskaOperacija {
 
     @Override
     protected void preduslovi(Object odo) throws Exception {
-        if (odo == null && !(odo instanceof TreningGrupa)) {
+        if (odo == null || !(odo instanceof TreningGrupa)) {
             throw new Exception("VALIDACIJA! Vrijednost parametra nije validna!");
         }
     }

@@ -24,7 +24,7 @@ public class UcitajFudbalera extends ApstraktnaSistemskaOperacija {
 
     @Override
     protected void preduslovi(Object odo) throws Exception {
-        if (odo == null && !(odo instanceof Fudbaler)) {
+        if (odo == null || !(odo instanceof Fudbaler)) {
             throw new Exception("VALIDACIJA! Vrijednost parametra nije validna!");
         }
     }

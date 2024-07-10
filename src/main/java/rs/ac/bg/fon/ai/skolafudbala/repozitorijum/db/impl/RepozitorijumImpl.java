@@ -18,8 +18,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-
 /**
  *
  * @author Korisnik
@@ -27,7 +25,7 @@ import java.util.logging.Logger;
 public class RepozitorijumImpl implements RepozitorijumDb<GenerickiEntitet, Object> {
 
     @Override
-    public List<GenerickiEntitet> getAll(GenerickiEntitet odo) {
+    public List<GenerickiEntitet> getAll(GenerickiEntitet odo) throws Exception {
         List<GenerickiEntitet> lista = new ArrayList<>();
         try {
             Connection connection = DBConnection.getInstance().getConnection();
@@ -54,7 +52,7 @@ public class RepozitorijumImpl implements RepozitorijumDb<GenerickiEntitet, Obje
     }
 
     @Override
-    public GenerickiEntitet getWhere(GenerickiEntitet odo) {
+    public GenerickiEntitet getWhere(GenerickiEntitet odo) throws Exception {
         GenerickiEntitet obj = null;
         try {
             Connection connection = DBConnection.getInstance().getConnection();
@@ -124,7 +122,7 @@ public class RepozitorijumImpl implements RepozitorijumDb<GenerickiEntitet, Obje
     }
 
     @Override
-    public int addUpdate(GenerickiEntitet odo) {
+    public int addUpdate(GenerickiEntitet odo) throws Exception{
         int broj = -1;
         try {
 
@@ -157,7 +155,7 @@ public class RepozitorijumImpl implements RepozitorijumDb<GenerickiEntitet, Obje
     }
 
     @Override
-    public int delete(GenerickiEntitet odo) {
+    public int delete(GenerickiEntitet odo) throws Exception {
         int broj = -1;
         try {
             Connection connection = DBConnection.getInstance().getConnection();
@@ -184,7 +182,7 @@ public class RepozitorijumImpl implements RepozitorijumDb<GenerickiEntitet, Obje
     }
 
     @Override
-    public List<GenerickiEntitet> pretraga(GenerickiEntitet odo) {
+    public List<GenerickiEntitet> pretraga(GenerickiEntitet odo) throws Exception {
         List<GenerickiEntitet> lista = new ArrayList<>();
         try {
             Connection connection = DBConnection.getInstance().getConnection();
