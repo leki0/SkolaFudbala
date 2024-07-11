@@ -4,6 +4,7 @@
  */
 package rs.ac.bg.fon.ai.skolafudbala.model;
 
+import com.google.gson.annotations.SerializedName;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -20,10 +21,12 @@ public class TipTreninga implements GenerickiEntitet {
     /**
      * Jedinstveni identifikator tipa treninga tipa long.
      */
+    @SerializedName("ID TIPA TRENINGA: ")
     private long tipId;
     /**
      * Naziv tipa treninga kao String.
      */
+    @SerializedName("NAZIV TIPA TRENINGA: ")
     private String nazivTipa;
 
     /**

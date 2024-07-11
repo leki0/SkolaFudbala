@@ -4,6 +4,7 @@
  */
 package rs.ac.bg.fon.ai.skolafudbala.model;
 
+import com.google.gson.annotations.SerializedName;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -22,31 +23,37 @@ public class LekarskiPregled implements GenerickiEntitet {
     /**
      * ID lekarskog pregleda tipa long.
      */
+    @SerializedName("ID LEKARSKOG PREGLEDA: ")
     private long pregledId;
 
     /**
      * Fudbaler koji je prošao lekarski pregled tipa Fudbaler.
      */
+    @SerializedName("FUDBALER: ")
     private Fudbaler fudbaler = new Fudbaler();
 
     /**
      * Visina fudbalera u centimetrima.
      */
+    @SerializedName("VISINA FUDBALERA: ")
     private double visina;
 
     /**
      * Težina fudbalera u kilogramima.
      */
+    @SerializedName("TEZINA FUDBALERA: ")
     private double tezina;
 
     /**
      * Zdravstveno stanje fudbalera kao String.
      */
+    @SerializedName("STANJE FUDBALERA: ")
     private String stanje;
 
     /**
      * Datum lekarskog pregleda kao Date.
      */
+    @SerializedName("DATUM OBAVLJANJA LEKARSKOG PREGLEDA: ")
     private Date datum;
 
     /**

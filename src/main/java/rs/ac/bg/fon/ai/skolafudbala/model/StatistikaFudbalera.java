@@ -4,6 +4,7 @@
  */
 package rs.ac.bg.fon.ai.skolafudbala.model;
 
+import com.google.gson.annotations.SerializedName;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -23,51 +24,61 @@ public class StatistikaFudbalera implements GenerickiEntitet {
     /**
      * Fudbaler na kojeg se odnosi statistika.
      */
+    @SerializedName("FUDBALER: ")
     private Fudbaler fudbaler;
 
     /**
      * Trening utakmica na kojoj je fudbaler učestvovao.
      */
+    @SerializedName("TRENING UTAKMICA: ")
     private TreningUtakmica treningUtakmica;
 
     /**
      * Broj postignutih golova kao int.
      */
+    @SerializedName("BROJ GOLOVA: ")
     private int brojGolova;
 
     /**
      * Broj asistencija kao int.
      */
+    @SerializedName("BROJ ASISTENCIJA: ")
     private int brojAsistencija;
 
     /**
      * Broj promašenih šuteva kao int.
      */
+    @SerializedName("BROJ PROMASENIH SUTEVA: ")
     private int brojPromasenihSuteva;
 
     /**
      * Broj provedenih minuta na terenu kao int.
      */
+    @SerializedName("BROJ PROVEDENIH MINUTA: ")
     private int brojProvedenihMinuta;
 
     /**
      * Da li je fudbaler bio u prvoj postavi.
      */
+    @SerializedName("DA LI FUDBALER BIO PRVA POSTAVA: ")
     private Boolean prvaPostava;
 
     /**
      * Broj odbrana golmana kao int.
      */
+    @SerializedName("BROJ ODBRANA GOLMANA: ")
     private int brojOdbrana;
 
     /**
      * Broj primljenih golova kao int.
      */
+    @SerializedName("BROJ PRIMLJENIH GOLOVA GOLMANA: ")
     private int brojPrimljenihGolova;
 
     /**
      * Ocjena fudbalera za utakmicu kao double.
      */
+    @SerializedName("OCJENA ZA FUDBALERA: ")
     private double ocjena;
 
     /**
