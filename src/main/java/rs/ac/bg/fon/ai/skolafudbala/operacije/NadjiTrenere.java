@@ -10,18 +10,40 @@ import java.util.List;
 
 
 /**
- *
- * @author Korisnik
+ * Klasa NadjiTrenere predstavlja sistemsku operaciju koja pretražuje trenere 
+ * na osnovu određenih kriterijuma.
+ * 
+ * Nasleđuje apstraktnu klasu ApstraktnaSistemskaOperacija i implementira
+ * metode za izvršenje operacije pronalazenja Trenera i validaciju preduslova.
+ * 
+ * @author Aleksa Stančić
  */
 public class NadjiTrenere extends ApstraktnaSistemskaOperacija {
 
+    /**
+     * Lista rezultata pretrage trenera.
+     */
     List<Trener> listaTreneraPretraga = new ArrayList<>();
 
+    /**
+     * Izvršava operaciju pretrage trenera.
+     * 
+     * Rezultat pretrage se čuva u listi listaTreneraPretraga.
+     * 
+     * @param odo objekat koji predstavlja kriterijum pretrage, očekuje se instanca klase Trener
+     * @throws Exception ako dođe do greške tokom pretrage
+     */
     @Override
     protected void izvrsiOperaciju(Object odo) throws Exception {
         listaTreneraPretraga = repozitorijum.pretraga((Trener) odo);
     }
 
+    /**
+     * Validira preduslove za izvršenje operacije.
+     * 
+     * @param odo objekat koji se validira, očekuje se instanca klase Trener
+     * @throws Exception ako objekat nije odgovarajućeg tipa ili ako je null
+     */
     @Override
     protected void preduslovi(Object odo) throws Exception {
         if (odo == null || !(odo instanceof Trener)) {
@@ -29,6 +51,11 @@ public class NadjiTrenere extends ApstraktnaSistemskaOperacija {
         }
     }
 
+    /**
+     * Vraća listu trenera koji su rezultat pretrage.
+     * 
+     * @return lista trenera kao rezultat pretrage
+     */
     public List<Trener> getListaTreneraPretraga() {
         return listaTreneraPretraga;
     }
