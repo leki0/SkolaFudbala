@@ -4,6 +4,9 @@
  */
 package rs.ac.bg.fon.ai.skolafudbala.forme;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.FileWriter;
 import java.io.IOException;
 import rs.ac.bg.fon.ai.skolafudbala.klijent.Klijent;
 import rs.ac.bg.fon.ai.skolafudbala.model.Fudbaler;
@@ -350,6 +353,14 @@ public class UnosIzmjenaTreningGrupeForma extends javax.swing.JFrame {
                         int kapacitet = Integer.parseInt(kapacitetString);
                         TreningGrupa tg = new TreningGrupa(nazivGrupe, kapacitet, trener, listaRasporeda);
                         long tgId = Klijent.getInstance().zapamtiTreningGrupu(tg);
+                        List<TreningGrupa> listaGrupa = new ArrayList<>();
+                        listaGrupa = Klijent.getInstance().ucitajListuTreningGrupe();
+                        for (TreningGrupa tgg1 : listaGrupa) {
+                            if (tgId == tgg1.getGrupaId()) {
+                                ubaciUJSON(tgg1);
+
+                            }
+                        }
                         JOptionPane.showMessageDialog(this, "Sistem je zapamtio trening grupu!", "Zapamćena trening grupa", JOptionPane.INFORMATION_MESSAGE);
                         ponovniUnos();
                     } catch (Exception ex) {
@@ -707,10 +718,10 @@ public class UnosIzmjenaTreningGrupeForma extends javax.swing.JFrame {
     }
 
     private void popuniComboBox(int i, Trener trener) throws Exception {
-        List<TipTreninga> listaTipova=new ArrayList<>();
+        List<TipTreninga> listaTipova = new ArrayList<>();
         List<Trener> listaTrenera = new ArrayList<>();
         listaTrenera = Klijent.getInstance().ucitajListuTrenera();
-        listaTipova=Klijent.getInstance().ucitajListuTipova();
+        listaTipova = Klijent.getInstance().ucitajListuTipova();
         //jComboBoxTipTreninga.setModel(new DefaultComboBoxModel<>(TipTreninga.values()));
         jComboBoxTipTreninga.setSelectedIndex(-1);
 
@@ -725,7 +736,7 @@ public class UnosIzmjenaTreningGrupeForma extends javax.swing.JFrame {
             }
             jComboBoxTrener.setSelectedItem(trener);
         }
-        
+
         if (i == 0) {
             for (TipTreninga tt : listaTipova) {
                 jComboBoxTipTreninga.addItem(tt);
@@ -738,5 +749,15 @@ public class UnosIzmjenaTreningGrupeForma extends javax.swing.JFrame {
             jComboBoxTrener.setSelectedItem(-1);
         }
 
+    }
+
+    private void ubaciUJSON(TreningGrupa tgg1) {
+        try (FileWriter out = new FileWriter("trening_grupa.json")) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            out.write(gson.toJson(tgg1));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

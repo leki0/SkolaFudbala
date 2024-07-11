@@ -1,0 +1,80 @@
+{
+  "ID TRENING GRUPE: ": 7,
+  "NAZIV TRENING GRUPE: ": "Seniori",
+  "KAPACITET TRENING GRUPE: ": 30,
+  "TRENER: ": {
+    "ID TRENERA: ": 5,
+    "IME TRENERA: ": "Aleksandar",
+    "PREZIME TRENERA: ": "Stanojevic",
+    "JMBG TRENERA: ": "1212980578463",
+    "GODINE ISKUSTVA TRENERA: ": 15
+  },
+  "LISTA RASPOREDA: ": [
+    {
+      "ID RASPOREDA: ": 9,
+      "TRENING GRUPA: ": {
+        "ID TRENING GRUPE: ": 7,
+        "NAZIV TRENING GRUPE: ": "Seniori",
+        "KAPACITET TRENING GRUPE: ": 30,
+        "TRENER: ": {
+          "ID TRENERA: ": 5,
+          "IME TRENERA: ": "Aleksandar",
+          "PREZIME TRENERA: ": "Stanojevic",
+          "JMBG TRENERA: ": "1212980578463",
+          "GODINE ISKUSTVA TRENERA: ": 15
+        },
+        "LISTA RASPOREDA: ": []
+      },
+      "DATUM POČETKA ": "May 12, 2025, 12:00:00 AM",
+      "DATUM ZAVRŠETKA: ": "Jun 12, 2025, 12:00:00 AM",
+      "TIP TRENINGA: ": {
+        "tipId": 5,
+        "nazivTipa": "Kondicioni"
+      }
+    },
+    {
+      "ID RASPOREDA: ": 10,
+      "TRENING GRUPA: ": {
+        "ID TRENING GRUPE: ": 7,
+        "NAZIV TRENING GRUPE: ": "Seniori",
+        "KAPACITET TRENING GRUPE: ": 30,
+        "TRENER: ": {
+          "ID TRENERA: ": 5,
+          "IME TRENERA: ": "Aleksandar",
+          "PREZIME TRENERA: ": "Stanojevic",
+          "JMBG TRENERA: ": "1212980578463",
+          "GODINE ISKUSTVA TRENERA: ": 15
+        },
+        "LISTA RASPOREDA: ": []
+      },
+      "DATUM POČETKA ": "Jun 12, 2025, 12:00:00 AM",
+      "DATUM ZAVRŠETKA: ": "Jul 12, 2025, 12:00:00 AM",
+      "TIP TRENINGA: ": {
+        "tipId": 6,
+        "nazivTipa": "Trening snage"
+      }
+    },
+    {
+      "ID RASPOREDA: ": 11,
+      "TRENING GRUPA: ": {
+        "ID TRENING GRUPE: ": 7,
+        "NAZIV TRENING GRUPE: ": "Seniori",
+        "KAPACITET TRENING GRUPE: ": 30,
+        "TRENER: ": {
+          "ID TRENERA: ": 5,
+          "IME TRENERA: ": "Aleksandar",
+          "PREZIME TRENERA: ": "Stanojevic",
+          "JMBG TRENERA: ": "1212980578463",
+          "GODINE ISKUSTVA TRENERA: ": 15
+        },
+        "LISTA RASPOREDA: ": []
+      },
+      "DATUM POČETKA ": "Jul 12, 2025, 12:00:00 AM",
+      "DATUM ZAVRŠETKA: ": "Aug 12, 2025, 12:00:00 AM",
+      "TIP TRENINGA: ": {
+        "tipId": 7,
+        "nazivTipa": "Trening tehnike"
+      }
+    }
+  ]
+}

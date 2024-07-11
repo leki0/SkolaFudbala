@@ -4,13 +4,16 @@
  */
 package rs.ac.bg.fon.ai.skolafudbala.forme;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import rs.ac.bg.fon.ai.skolafudbala.klijent.Klijent;
 import rs.ac.bg.fon.ai.skolafudbala.model.Trener;
 import rs.ac.bg.fon.ai.skolafudbala.nacinprikazaforme.Prikaz;
 import javax.swing.JOptionPane;
-
-
 
 /**
  *
@@ -222,7 +225,16 @@ public class UnosIzmjenaTreneraForma extends javax.swing.JFrame {
                 if (validanFormat.equals("")) {
                     int godineIskustvaInt = Integer.parseInt(godineIskustvaString);
                     t = new Trener(ime, prezime, jmbg, godineIskustvaInt);
+
                     long trenerId = Klijent.getInstance().zapamtiTrenera(t);
+                    List<Trener> listaTre = new ArrayList<>();
+                    listaTre = Klijent.getInstance().ucitajListuTrenera();
+                    for (Trener tr : listaTre) {
+                        if (trenerId == tr.getTrenerId()) {
+                            upisiUJSON(tr);
+
+                        }
+                    }
                     JOptionPane.showMessageDialog(this, "Sistem je zapamtio trenera", "Trener zapamcen", JOptionPane.INFORMATION_MESSAGE);
                     ponovniUnos();
                 } else {
@@ -407,5 +419,15 @@ public class UnosIzmjenaTreneraForma extends javax.swing.JFrame {
         jTextFieldPrezime.setText("");
         jTextFieldJMBG.setText("");
         jTextFieldIskustvo.setText("");
+    }
+
+    private void upisiUJSON(Trener tr) {
+        try (FileWriter out = new FileWriter("trener.json")) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            out.write(gson.toJson(tr));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

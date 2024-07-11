@@ -4,6 +4,9 @@
  */
 package rs.ac.bg.fon.ai.skolafudbala.forme;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.FileWriter;
 import java.io.IOException;
 import rs.ac.bg.fon.ai.skolafudbala.enums.Pozicija;
 import rs.ac.bg.fon.ai.skolafudbala.klijent.Klijent;
@@ -17,8 +20,6 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-
-
 
 /**
  *
@@ -277,7 +278,15 @@ public class UnosIzmjenaFudbaleraForma extends javax.swing.JFrame {
                     Date datum = format.parse(datumStr);
                     System.out.println(tg.getGrupaId() + " " + tg.getNazivGrupe() + " " + tg.getTrener().getIme());
                     f = new Fudbaler(ime, prezime, jmbg, pozicija.toString(), tg, datum);
+
                     long fudbalerID = Klijent.getInstance().zapamtiFudbalera(f);
+                    List<Fudbaler> listaF = new ArrayList<>();
+                    listaF = Klijent.getInstance().ucitajListuFudbalera();
+                    for (Fudbaler ff : listaF) {
+                        if (fudbalerID == ff.getFudbalerId()) {
+                            upisiUJSON(ff);
+                        }
+                    }
                     JOptionPane.showMessageDialog(this, "Sistem je zapamtio fudbalera", "Fudbaler zapamcen", JOptionPane.INFORMATION_MESSAGE);
                     ponovniUnos();
                 } else {
@@ -590,6 +599,16 @@ public class UnosIzmjenaFudbaleraForma extends javax.swing.JFrame {
         jTextFieldRodjenje.setText("");
         jComboBoxPozicija.setSelectedIndex(-1);
         jComboBoxTreningGrupa.setSelectedIndex(-1);
+    }
+
+    private void upisiUJSON(Fudbaler ff) {
+        try (FileWriter out = new FileWriter("fudbaler.json")) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            out.write(gson.toJson(ff));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

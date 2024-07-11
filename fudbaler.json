@@ -1,0 +1,21 @@
+{
+  "ID FUDBALERA: ": 5,
+  "IME FUDBALERA: ": "Lazar",
+  "PREZIME FUDBALERA: ": "Markovic",
+  "JMBG FUDBALERA: ": "1212994678253",
+  "POZICIJA FUDBALERA: ": "KRILO",
+  "TRENING GRUPA FUDBALERA: ": {
+    "ID TRENING GRUPE: ": 1,
+    "NAZIV TRENING GRUPE: ": "Kadeti",
+    "KAPACITET TRENING GRUPE: ": 88,
+    "TRENER: ": {
+      "ID TRENERA: ": 1,
+      "IME TRENERA: ": "Igor",
+      "PREZIME TRENERA: ": "Duljaj",
+      "JMBG TRENERA: ": "1289463782934",
+      "GODINE ISKUSTVA TRENERA: ": 4
+    },
+    "LISTA RASPOREDA: ": []
+  },
+  "DATUM RODJENJA FUDBALERA: ": "Dec 12, 1994, 12:00:00 AM"
+}

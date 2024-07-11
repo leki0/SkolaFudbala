@@ -4,6 +4,7 @@
  */
 package rs.ac.bg.fon.ai.skolafudbala.model;
 
+import com.google.gson.annotations.SerializedName;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -22,36 +23,43 @@ public class Fudbaler implements GenerickiEntitet {
     /**
      * ID fudbalera tipa long
      */
+    @SerializedName("ID FUDBALERA: ")
     private long fudbalerId;
 
     /**
      * Ime fudbalera kao String
      */
+    @SerializedName("IME FUDBALERA: ")
     private String ime;
 
     /**
      * Prezime fudbalera kao String
      */
+    @SerializedName("PREZIME FUDBALERA: ")
     private String prezime;
 
     /**
      * JMBG fudbalera kao String
      */
+    @SerializedName("JMBG FUDBALERA: ")
     private String jmbg;
 
     /**
      * Pozicija fudbalera kao String
      */
+    @SerializedName("POZICIJA FUDBALERA: ")
     private String pozicija;
 
     /**
      * Trening grupa kojoj fudbaler pripada, tipa TreningGrupa
      */
+    @SerializedName("TRENING GRUPA FUDBALERA: ")
     private TreningGrupa treningGrupa = new TreningGrupa();
 
     /**
      * Datum rođenja fudbalera tipa Date
      */
+    @SerializedName("DATUM RODJENJA FUDBALERA: ")
     private Date datumRodjenja;
 
     /**

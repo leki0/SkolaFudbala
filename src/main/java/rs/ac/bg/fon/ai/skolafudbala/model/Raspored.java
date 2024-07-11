@@ -4,6 +4,7 @@
  */
 package rs.ac.bg.fon.ai.skolafudbala.model;
 
+import com.google.gson.annotations.SerializedName;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -21,26 +22,31 @@ public class Raspored implements GenerickiEntitet {
     /**
      * ID rasporeda tipa long.
      */
+    @SerializedName("ID RASPOREDA: ")
     private long rasporedId;
 
     /**
      * Trening grupa za koju se pravi raspored.
      */
+    @SerializedName("TRENING GRUPA: ")
     private TreningGrupa grupa = new TreningGrupa();
 
     /**
      * Datum početka rasporeda tipa Date.
      */
+    @SerializedName("DATUM POČETKA ")
     private Date datumOd;
 
     /**
      * Datum završetka rasporeda tipa Date.
      */
+    @SerializedName("DATUM ZAVRŠETKA: ")
     private Date datumDo;
 
     /**
      * Tip treninga koji je predvidjen za tu grupu u sklopu tog rasporeda.
      */
+    @SerializedName("TIP TRENINGA: ")
     private TipTreninga tipTreninga = new TipTreninga();
 
     /**

@@ -4,6 +4,7 @@
  */
 package rs.ac.bg.fon.ai.skolafudbala.model;
 
+import com.google.gson.annotations.SerializedName;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -20,26 +21,31 @@ public class Trener implements GenerickiEntitet {
     /**
      * ID trenera tipa long.
      */
+    @SerializedName("ID TRENERA: ")
     private long trenerId;
 
     /**
      * Ime trenera kao String.
      */
+    @SerializedName("IME TRENERA: ")
     private String ime;
 
     /**
      * Prezime trenera kao String.
      */
+    @SerializedName("PREZIME TRENERA: ")
     private String prezime;
 
     /**
      * JMBG trenera kao String.
      */
+    @SerializedName("JMBG TRENERA: ")
     private String jmbg;
 
     /**
      * Godine iskustva trenera kao int.
      */
+    @SerializedName("GODINE ISKUSTVA TRENERA: ")
     private int godineIskustva;
 
     /**
@@ -337,7 +343,7 @@ public class Trener implements GenerickiEntitet {
 
     /**
      * Vraća naziv ID kolone za entitet Trener.
-     * 
+     *
      * @return naziv ID kolone kao String
      */
     @Override
@@ -347,10 +353,11 @@ public class Trener implements GenerickiEntitet {
 
     /**
      * Kreira novi entitet Trener na osnovu rezultata upita iz baze podataka.
-     * 
+     *
      * @param rs rezultat upita iz baze podataka kao ResultSet
      * @return novi entitet Trener
-     * @throws SQLException ako dođe do greške prilikom čitanja rezultata iz baze
+     * @throws SQLException ako dođe do greške prilikom čitanja rezultata iz
+     * baze
      */
     @Override
     public GenerickiEntitet getJoinEntity(ResultSet rs) throws SQLException {
@@ -358,11 +365,13 @@ public class Trener implements GenerickiEntitet {
     }
 
     /**
-     * Kreira novi entitet Trener na osnovu rezultata JOIN upita iz baze podataka.
-     * 
+     * Kreira novi entitet Trener na osnovu rezultata JOIN upita iz baze
+     * podataka.
+     *
      * @param rs rezultat JOIN upita iz baze podataka
      * @return novi entitet Trener
-     * @throws SQLException ako dođe do greške prilikom čitanja rezultata iz baze
+     * @throws SQLException ako dođe do greške prilikom čitanja rezultata iz
+     * baze
      */
     @Override
     public GenerickiEntitet getEntity(ResultSet rs) throws SQLException {
@@ -371,7 +380,7 @@ public class Trener implements GenerickiEntitet {
 
     /**
      * Vraća jedinstveni ID objekta Trener.
-     * 
+     *
      * @return jedinstveni ID
      */
     @Override
@@ -381,7 +390,7 @@ public class Trener implements GenerickiEntitet {
 
     /**
      * Vraća deo WHERE uslova za SQL upit sa dva parametra (ime i JMBG).
-     * 
+     *
      * @return deo WHERE uslova sa dva parametra kao String
      */
     @Override
@@ -397,7 +406,7 @@ public class Trener implements GenerickiEntitet {
 
     /**
      * Vraća alias za entitet Trener.
-     * 
+     *
      * @return alias kao String
      */
     @Override
@@ -407,7 +416,7 @@ public class Trener implements GenerickiEntitet {
 
     /**
      * Vraća deo WHERE uslova za SQL upit.
-     * 
+     *
      * @return deo WHERE uslova kao String
      */
     @Override

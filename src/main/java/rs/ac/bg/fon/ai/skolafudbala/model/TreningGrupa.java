@@ -4,6 +4,7 @@
  */
 package rs.ac.bg.fon.ai.skolafudbala.model;
 
+import com.google.gson.annotations.SerializedName;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,26 +24,31 @@ public class TreningGrupa implements GenerickiEntitet {
     /**
      * ID trening grupe kao long.
      */
+    @SerializedName("ID TRENING GRUPE: ")
     private long grupaId;
 
     /**
      * Naziv trening grupe kao String.
      */
+    @SerializedName("NAZIV TRENING GRUPE: ")
     private String nazivGrupe;
 
     /**
      * Kapacitet trening grupe kao int.
      */
+    @SerializedName("KAPACITET TRENING GRUPE: ")
     private int kapacitet;
 
     /**
      * Trener koji vodi trening grupu.
      */
+    @SerializedName("TRENER: ")
     private Trener trener = new Trener();
 
     /**
      * Lista rasporeda za trening grupu.
      */
+    @SerializedName("LISTA RASPOREDA: ")
     private List<Raspored> listaRasporeda = new ArrayList<>();
 
     /**
