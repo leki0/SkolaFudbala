@@ -4,8 +4,11 @@
  */
 package rs.ac.bg.fon.ai.skolafudbala.forme;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.FileWriter;
 import java.io.IOException;
 import rs.ac.bg.fon.ai.skolafudbala.enums.Pozicija;
 import rs.ac.bg.fon.ai.skolafudbala.klijent.Klijent;
@@ -623,6 +626,13 @@ public class UnosTreningUtakmiceForma extends javax.swing.JDialog {
 
                     TreningUtakmica tu = new TreningUtakmica(redniBr, datum, brTim1, brTim2, markirani, neMarkirani, listaStatistika);
                     long potvrdaUnosa = Klijent.getInstance().zapamtiTreningUtakmicu(tu);
+                    List<TreningUtakmica> listaTU = new ArrayList<>();
+                    listaTU = Klijent.getInstance().ucitajListuTreningUtakmica();
+                    for (TreningUtakmica tuu1 : listaTU) {
+                        if (potvrdaUnosa == tuu1.getTreningUtakmicaId()) {
+                            upisiUJSON(tuu1);
+                        }
+                    }
                     JOptionPane.showMessageDialog(this, "Uspjesno ste unijeli trening utakmicu!", "Potvrda unosa", JOptionPane.INFORMATION_MESSAGE);
                     popuniTabeluTreningUtakmica();
                     ponovniUnos();
@@ -1078,5 +1088,15 @@ public class UnosTreningUtakmiceForma extends javax.swing.JDialog {
         brGolovaIgracNeMarkirani = 0;
         brAsistenIgracNeMarkirani = 0;
         brPrimljenGolmanNemarkirani = 0;
+    }
+
+    private void upisiUJSON(TreningUtakmica tuu1) {
+        try (FileWriter out = new FileWriter("trening_utakmica.json")) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            out.write(gson.toJson(tuu1));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -4,6 +4,7 @@
  */
 package rs.ac.bg.fon.ai.skolafudbala.model;
 
+import com.google.gson.annotations.SerializedName;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -23,41 +24,49 @@ public class TreningUtakmica implements GenerickiEntitet {
     /**
      * ID utakmice kao long.
      */
+    @SerializedName("ID TRENING UTAKMICE: ")
     private long treningUtakmicaId;
 
     /**
      * Redni broj utakmice kao int.
      */
+    @SerializedName("REDNI BROJ TRENING UTAKMICE: ")
     private int redniBroj;
 
     /**
      * Datum održavanja utakmice.
      */
+    @SerializedName("DATUM TRENING UTAKMICE: ")
     private Date datum;
 
     /**
      * Broj golova postignutih od strane tima 1 kao int.
      */
+    @SerializedName("BROJ POSTIGNUTIH GOLOVA TIM1: ")
     private int brojGolovaTim1;
 
     /**
      * Broj golova postignutih od strane tima 2 kao int.
      */
+    @SerializedName("BROJ POSTIGNUTIH GOLOVA TIM2: ")
     private int brojGolovaTikm2;
 
     /**
      * Prvi tim koji učestvuje na utakmici
      */
+    @SerializedName("TIM1: ")
     private TreningGrupa tim1 = new TreningGrupa();
 
     /**
      * Drugi tim koji učestvuje na utakmici.
      */
+    @SerializedName("TIM2: ")
     private TreningGrupa tim2 = new TreningGrupa();
 
     /**
      * Lista statistika fudbalera koji su učestvovali na utakmici.
      */
+    @SerializedName("LISTA STATISTIKA FUDBALERA: ")
     private List<StatistikaFudbalera> listaStatistika;
 
     /**

@@ -1,0 +1,33 @@
+{
+  "ID TRENING UTAKMICE: ": 2,
+  "REDNI BROJ TRENING UTAKMICE: ": 2,
+  "DATUM TRENING UTAKMICE: ": "May 12, 2024, 12:00:00 AM",
+  "BROJ POSTIGNUTIH GOLOVA TIM1: ": 0,
+  "BROJ POSTIGNUTIH GOLOVA TIM2: ": 0,
+  "TIM1: ": {
+    "ID TRENING GRUPE: ": 1,
+    "NAZIV TRENING GRUPE: ": "Kadeti",
+    "KAPACITET TRENING GRUPE: ": 88,
+    "TRENER: ": {
+      "ID TRENERA: ": 1,
+      "IME TRENERA: ": "Igor",
+      "PREZIME TRENERA: ": "Duljaj",
+      "JMBG TRENERA: ": "1289463782934",
+      "GODINE ISKUSTVA TRENERA: ": 4
+    },
+    "LISTA RASPOREDA: ": []
+  },
+  "TIM2: ": {
+    "ID TRENING GRUPE: ": 3,
+    "NAZIV TRENING GRUPE: ": "Dragani",
+    "KAPACITET TRENING GRUPE: ": 30,
+    "TRENER: ": {
+      "ID TRENERA: ": 1,
+      "IME TRENERA: ": "Igor",
+      "PREZIME TRENERA: ": "Duljaj",
+      "JMBG TRENERA: ": "1289463782934",
+      "GODINE ISKUSTVA TRENERA: ": 4
+    },
+    "LISTA RASPOREDA: ": []
+  }
+}
