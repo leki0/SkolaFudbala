@@ -98,39 +98,28 @@ public class ZapamtiTreningUtakmicuTest {
         });
 
         assertEquals("Već postoji trening utakmica sa ovim rednim brojem!", exception.getMessage());
-    
-}
 
-@Test
-public 
-
-void testPreduslovi_NevalidanObjekat() {
-        assertThrows(Exception.class  
-
-    , () -> {
-    zapamtiTreningUtakmicu.preduslovi (
-
-null);
-        });
-
-        assertThrows
-
-(Exception.class  
-
-    , () -> {
-    zapamtiTreningUtakmicu.preduslovi (
-
-new StatistikaFudbalera());
-        });
     }
 
     @Test
-public 
+    public void testPreduslovi_NevalidanObjekat() {
+        assertThrows(Exception.class,
+                 () -> {
+                    zapamtiTreningUtakmicu.preduslovi(
+                            null);
+                });
 
-void testPreduslovi_UspesnaValidacija() throws Exception {
-        when(repozitorijum.getAll(any(TreningUtakmica.class  
+        assertThrows(Exception.class,
+                 () -> {
+                    zapamtiTreningUtakmicu.preduslovi(
+                            new StatistikaFudbalera());
+                });
+    }
 
-))).thenReturn(Collections.emptyList());
+    @Test
+    public void testPreduslovi_UspesnaValidacija() throws Exception {
+        when(repozitorijum.getAll(any(TreningUtakmica.class
+        ))).thenReturn(Collections.emptyList());
 
         assertDoesNotThrow(() -> {
             zapamtiTreningUtakmicu.preduslovi(treningUtakmica);

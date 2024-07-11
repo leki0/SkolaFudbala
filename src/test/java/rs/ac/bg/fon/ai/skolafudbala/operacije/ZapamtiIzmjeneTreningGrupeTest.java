@@ -16,6 +16,7 @@ import rs.ac.bg.fon.ai.skolafudbala.repozitorijum.Repozitorijum;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import rs.ac.bg.fon.ai.skolafudbala.model.Korisnik;
 
 @ExtendWith(MockitoExtension.class)
 public class ZapamtiIzmjeneTreningGrupeTest {
@@ -150,7 +151,7 @@ public class ZapamtiIzmjeneTreningGrupeTest {
     @Test
     public void testPreduslovi_NevalidanObjekat() {
         assertThrows(Exception.class, () -> {
-            zapamtiIzmjeneTreningGrupe.preduslovi(new Object());
+            zapamtiIzmjeneTreningGrupe.preduslovi(new Korisnik());
         });
 
         assertThrows(Exception.class, () -> {
