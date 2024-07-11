@@ -39,11 +39,11 @@ public class ZapamtiTreneraTest {
 
     @Test
     public void testIzvrsiOperaciju_UspesnoDodavanje() throws Exception {
-        when(repozitorijum.add(trener)).thenReturn(1L);
+        when(repozitorijum.add(trener)).thenReturn(9L);
 
         zapamtiTrenera.izvrsiOperaciju(trener);
 
-        assertEquals(1L, zapamtiTrenera.getId());
+        assertEquals(9L, zapamtiTrenera.getId());
         verify(repozitorijum, times(1)).add(trener);
     }
 

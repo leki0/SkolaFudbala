@@ -11,12 +11,13 @@ import rs.ac.bg.fon.ai.skolafudbala.model.LekarskiPregled;
  *
  * @author Korisnik
  */
-public class ZapamtiPregled extends ApstraktnaSistemskaOperacija{
+public class ZapamtiPregled extends ApstraktnaSistemskaOperacija {
+
     private long id;
 
     @Override
     protected void izvrsiOperaciju(Object odo) throws Exception {
-        repozitorijum.add((LekarskiPregled) odo);
+        id = repozitorijum.add((LekarskiPregled) odo);
     }
 
     @Override

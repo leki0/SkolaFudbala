@@ -7,8 +7,6 @@ package rs.ac.bg.fon.ai.skolafudbala.operacije;
 import rs.ac.bg.fon.ai.skolafudbala.model.Trener;
 import java.util.List;
 
-
-
 /**
  *
  * @author Korisnik
@@ -19,7 +17,7 @@ public class ZapamtiTrenera extends ApstraktnaSistemskaOperacija {
 
     @Override
     protected void izvrsiOperaciju(Object odo) throws Exception {
-        repozitorijum.add((Trener) odo);
+        id = repozitorijum.add((Trener) odo);
     }
 
     @Override
