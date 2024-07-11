@@ -15,7 +15,6 @@ import rs.ac.bg.fon.ai.skolafudbala.repozitorijum.Repozitorijum;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-import static org.mockito.ArgumentMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
 public class UcitajListuTreningGrupeTest {
@@ -34,48 +33,52 @@ public class UcitajListuTreningGrupeTest {
     }
 
     @Test
-    public void testPreduslovi_ValidanObjekat() {
-        assertDoesNotThrow(() -> {
-            ucitajListuTreningGrupe.preduslovi(new Object());
-        });
-    }
-
-    @Test
     public void testIzvrsiOperaciju_UspesnoUcitavanjeListe() throws Exception {
-        TreningGrupa grupa1 = new TreningGrupa();
-        grupa1.setNazivGrupe("Kadeti");
+        TreningGrupa tg1 = new TreningGrupa();
+        tg1.setId(1L);
+        tg1.setNazivGrupe("Kadeti");
 
-        TreningGrupa grupa2 = new TreningGrupa();
-        grupa2.setNazivGrupe("Petlici");
+        TreningGrupa tg2 = new TreningGrupa();
+        tg2.setId(2L);
+        tg2.setNazivGrupe("Petlici");
 
-        Raspored raspored1 = new Raspored();
-        Raspored raspored2 = new Raspored();
+        List<TreningGrupa> listaTreningGrupa = Arrays.asList(tg1, tg2);
 
-        List<TreningGrupa> listaTreningGrupaIzBaze = Arrays.asList(grupa1, grupa2);
-        List<Raspored> listaRasporedaIzBaze = Arrays.asList(raspored1, raspored2);
+        Raspored r1 = new Raspored();
+        r1.setId(1L);
 
-        when(repozitorijum.getAll(any(TreningGrupa.class))).thenReturn(listaTreningGrupaIzBaze);
-        when(repozitorijum.getAll(any(Raspored.class))).thenReturn(listaRasporedaIzBaze);
+        Raspored r2 = new Raspored();
+        r2.setId(2L);
+
+        List<Raspored> listaRasporeda = Arrays.asList(r1, r2);
+
+        when(repozitorijum.getAll(new TreningGrupa())).thenReturn(listaTreningGrupa);
+        when(repozitorijum.getAll(new Raspored())).thenReturn(listaRasporeda);
 
         ucitajListuTreningGrupe.izvrsiOperaciju(new Object());
 
-        assertEquals(listaTreningGrupaIzBaze, ucitajListuTreningGrupe.getListaTreningGrupa());
-        assertEquals(listaRasporedaIzBaze, ucitajListuTreningGrupe.getListaRasporeda());
-        verify(repozitorijum, times(1)).getAll(any(TreningGrupa.class));
-        verify(repozitorijum, times(1)).getAll(any(Raspored.class));
+        assertEquals(listaTreningGrupa, ucitajListuTreningGrupe.getListaTreningGrupa());
+        assertEquals(listaRasporeda, ucitajListuTreningGrupe.getListaRasporeda());
+        verify(repozitorijum, times(1)).getAll(new TreningGrupa());
+        verify(repozitorijum, times(1)).getAll(new Raspored());
     }
 
     @Test
     public void testIzvrsiOperaciju_RepozitorijumBacaException() throws Exception {
-        when(repozitorijum.getAll(any(TreningGrupa.class))).thenThrow(new Exception("Greška u repozitorijumu"));
-        when(repozitorijum.getAll(any(Raspored.class))).thenThrow(new Exception("Greška u repozitorijumu"));
+        when(repozitorijum.getAll(new TreningGrupa())).thenThrow(new Exception("Greška u repozitorijumu"));
 
         Exception exception = assertThrows(Exception.class, () -> {
             ucitajListuTreningGrupe.izvrsiOperaciju(new Object());
         });
 
         assertEquals("Greška u repozitorijumu", exception.getMessage());
-        verify(repozitorijum, times(1)).getAll(any(TreningGrupa.class));
-        verify(repozitorijum, times(1)).getAll(any(Raspored.class));
+        verify(repozitorijum, times(1)).getAll(new TreningGrupa());
+    }
+
+    @Test
+    public void testPreduslovi_ValidanObjekat() {
+        assertDoesNotThrow(() -> {
+            ucitajListuTreningGrupe.preduslovi(new Object());
+        });
     }
 }
