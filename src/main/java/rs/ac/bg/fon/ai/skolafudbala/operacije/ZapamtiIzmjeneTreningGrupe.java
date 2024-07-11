@@ -9,16 +9,30 @@ import rs.ac.bg.fon.ai.skolafudbala.model.TreningGrupa;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 /**
+ * Klasa ZapamtiIzmjeneTreningGrupe predstavlja sistemsku operaciju za čuvanje
+ * izmena nad trening grupom u bazi podataka.
  *
- * @author Korisnik
+ * Nasleđuje apstraktnu klasu ApstraktnaSistemskaOperacija i implementira metode
+ * za izvršenje operacije i validaciju preduslova.
+ *
+ * @author Aleksa Stančić
  */
 public class ZapamtiIzmjeneTreningGrupe extends ApstraktnaSistemskaOperacija {
 
+    /**
+     * Broj izmena nad trening grupom koji je vraćen nakon čuvanja izmena.
+     */
     private int izmjenjenaTG;
 
+    /**
+     * Izvršava operaciju čuvanja izmena nad trening grupom u bazi, kao i izmenu
+     * liste rasporeda u okviru trening grupe na toj utakmici(dodavanje ili
+     * brisanje) u zavisnosti od akcije u formi.
+     *
+     * @param odo objekat koji predstavlja trening grupu sa izmenama
+     * @throws Exception ako dođe do greške tokom čuvanja izmena
+     */
     @Override
     protected void izvrsiOperaciju(Object odo) throws Exception {
         izmjenjenaTG = 0;
@@ -60,6 +74,13 @@ public class ZapamtiIzmjeneTreningGrupe extends ApstraktnaSistemskaOperacija {
 
     }
 
+    /**
+     * Validira preduslove za izvršenje operacije.
+     *
+     * @param odo objekat koji se validira, očekuje se instanca klase
+     * TreningGrupa
+     * @throws Exception ako objekat nije odgovarajućeg tipa ili ako je null
+     */
     @Override
     protected void preduslovi(Object odo) throws Exception {
         if (odo == null || !(odo instanceof TreningGrupa)) {
@@ -67,6 +88,11 @@ public class ZapamtiIzmjeneTreningGrupe extends ApstraktnaSistemskaOperacija {
         }
     }
 
+    /**
+     * Vraća broj izmena nad trening grupom koji je vraćen nakon čuvanja izmena.
+     *
+     * @return broj izmena nad trening grupom
+     */
     public int getIzmjenjenaTG() {
         return izmjenjenaTG;
     }

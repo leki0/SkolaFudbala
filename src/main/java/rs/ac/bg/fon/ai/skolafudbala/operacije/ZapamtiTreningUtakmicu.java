@@ -8,15 +8,32 @@ import rs.ac.bg.fon.ai.skolafudbala.model.StatistikaFudbalera;
 import rs.ac.bg.fon.ai.skolafudbala.model.TreningUtakmica;
 import java.util.List;
 
-
 /**
+ * Klasa ZapamtiTreningUtakmicu predstavlja sistemsku operaciju koja čuva novu
+ * trening utakmicu u bazi podataka, zajedno sa statistikama fudbalera koji su
+ * učestvovali na utakmici.
  *
- * @author Korisnik
+ * Nasleđuje apstraktnu klasu ApstraktnaSistemskaOperacija i implementira metode
+ * za izvršenje operacije i validaciju preduslova.
+ *
+ * @autor Aleksa Stančić
  */
 public class ZapamtiTreningUtakmicu extends ApstraktnaSistemskaOperacija {
 
+    /**
+     * ID trening utakmice koja je sačuvana u bazi.
+     */
     private long id;
 
+    /**
+     * Izvršava operaciju čuvanja trening utakmice i statistika fudbalera.
+     *
+     * Rezultat čuvanja je ID sačuvane trening utakmice, koji se čuva u
+     * promenljivoj id.
+     *
+     * @param odo objekat koji predstavlja trening utakmicu koja se čuva
+     * @throws Exception ako dođe do greške tokom čuvanja
+     */
     @Override
     protected void izvrsiOperaciju(Object odo) throws Exception {
         id = repozitorijum.add((TreningUtakmica) odo);
@@ -28,6 +45,14 @@ public class ZapamtiTreningUtakmicu extends ApstraktnaSistemskaOperacija {
         }
     }
 
+    /**
+     * Validira preduslove za izvršenje operacije.
+     *
+     * @param odo objekat koji se validira, očekuje se instanca klase
+     * TreningUtakmica
+     * @throws Exception ako objekat nije odgovarajućeg tipa, ako je null, ili
+     * ako već postoji trening utakmica sa istim rednim brojem i istim timovima
+     */
     @Override
     protected void preduslovi(Object odo) throws Exception {
         if (odo == null || !(odo instanceof TreningUtakmica)) {
@@ -43,6 +68,11 @@ public class ZapamtiTreningUtakmicu extends ApstraktnaSistemskaOperacija {
         }
     }
 
+    /**
+     * Vraća ID trening utakmice koja je sačuvana u bazi.
+     *
+     * @return ID sačuvane trening utakmice
+     */
     public long getId() {
         return id;
     }
