@@ -130,14 +130,14 @@ public class ZapamtiIzmjeneTreningGrupeTest {
         TreningGrupa tg = new TreningGrupa();
         tg.setId(1L);
 
-        when(repozitorijum.getAll(new Raspored())).thenThrow(new Exception("Greška u repozitorijumu"));
+        when(repozitorijum.addUpdate(tg)).thenThrow(new Exception("Greška u repozitorijumu"));
 
         Exception exception = assertThrows(Exception.class, () -> {
             zapamtiIzmjeneTreningGrupe.izvrsiOperaciju(tg);
         });
 
         assertEquals("Greška u repozitorijumu", exception.getMessage());
-        verify(repozitorijum, times(1)).getAll(new Raspored());
+        verify(repozitorijum, times(1)).addUpdate(tg);
     }
 
     @Test

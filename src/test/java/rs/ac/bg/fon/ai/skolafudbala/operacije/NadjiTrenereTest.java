@@ -51,10 +51,8 @@ public class NadjiTrenereTest {
 
     @Test
     public void testIzvrsiOperaciju_RepozitorijumBacaException() throws Exception {
-        // Postavite ponašanje mock objekta da baci izuzetak kada se pozove pretraga
         when(repozitorijum.pretraga(trener)).thenThrow(new Exception("Greška u repozitorijumu"));
 
-        // Proverite da li se izuzetak pravilno propagira
         Exception exception = assertThrows(Exception.class, () -> {
             nadjiTrenere.izvrsiOperaciju(trener);
         });

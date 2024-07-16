@@ -104,13 +104,13 @@ public class ZapamtiTreningUtakmicuTest {
     @Test
     public void testPreduslovi_NevalidanObjekat() {
         assertThrows(Exception.class,
-                 () -> {
+                () -> {
                     zapamtiTreningUtakmicu.preduslovi(
                             null);
                 });
 
         assertThrows(Exception.class,
-                 () -> {
+                () -> {
                     zapamtiTreningUtakmicu.preduslovi(
                             new StatistikaFudbalera());
                 });
@@ -118,8 +118,6 @@ public class ZapamtiTreningUtakmicuTest {
 
     @Test
     public void testPreduslovi_UspesnaValidacija() throws Exception {
-        when(repozitorijum.getAll(any(TreningUtakmica.class
-        ))).thenReturn(Collections.emptyList());
 
         assertDoesNotThrow(() -> {
             zapamtiTreningUtakmicu.preduslovi(treningUtakmica);

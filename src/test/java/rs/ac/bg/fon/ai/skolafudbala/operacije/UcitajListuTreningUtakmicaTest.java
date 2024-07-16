@@ -43,7 +43,7 @@ public class UcitajListuTreningUtakmicaTest {
 
         when(repozitorijum.getAll(new TreningUtakmica())).thenReturn(listaTreningUtakmica);
 
-        ucitajListuTreningUtakmica.izvrsiOperaciju(new Object());
+        ucitajListuTreningUtakmica.izvrsiOperaciju(new TreningUtakmica());
 
         assertEquals(listaTreningUtakmica, ucitajListuTreningUtakmica.getListaTreningUtakmica());
         verify(repozitorijum, times(1)).getAll(new TreningUtakmica());
@@ -54,7 +54,7 @@ public class UcitajListuTreningUtakmicaTest {
         when(repozitorijum.getAll(new TreningUtakmica())).thenThrow(new Exception("Greška u repozitorijumu"));
 
         Exception exception = assertThrows(Exception.class, () -> {
-            ucitajListuTreningUtakmica.izvrsiOperaciju(new Object());
+            ucitajListuTreningUtakmica.izvrsiOperaciju(new TreningUtakmica());
         });
 
         assertEquals("Greška u repozitorijumu", exception.getMessage());

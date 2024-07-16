@@ -51,21 +51,26 @@ public class ObrisiTreningGrupuTest {
         obrisiTreningGrupu.izvrsiOperaciju(treningGrupa);
 
         assertEquals(1, obrisiTreningGrupu.getObrisanaTreningGrupa());
-        assertEquals(1, obrisiTreningGrupu.getObrisanaTreningGrupa());
         verify(repozitorijum, times(1)).delete(raspored);
         verify(repozitorijum, times(1)).delete(treningGrupa);
     }
 
     @Test
     public void testIzvrsiOperaciju_RepozitorijumBacaException() throws Exception {
-        when(repozitorijum.delete(raspored)).thenThrow(new Exception("Greška u repozitorijumu"));
+        doThrow(new Exception("Greška u repozitorijumu")).when(repozitorijum).delete(any(Raspored.class));
+
+        TreningGrupa treningGrupa = new TreningGrupa();
+        Raspored raspored = new Raspored();
+        treningGrupa.setListaRasporeda(Arrays.asList(raspored));
 
         Exception exception = assertThrows(Exception.class, () -> {
             obrisiTreningGrupu.izvrsiOperaciju(treningGrupa);
         });
 
         assertEquals("Greška u repozitorijumu", exception.getMessage());
-        verify(repozitorijum, times(1)).delete(raspored);
+
+        verify(repozitorijum, times(1)).delete(any(Raspored.class));
+        verify(repozitorijum, times(0)).delete(any(TreningGrupa.class));
     }
 
     @Test
