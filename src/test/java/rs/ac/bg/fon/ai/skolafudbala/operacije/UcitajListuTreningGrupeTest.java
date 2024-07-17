@@ -55,7 +55,7 @@ public class UcitajListuTreningGrupeTest {
         when(repozitorijum.getAll(new TreningGrupa())).thenReturn(listaTreningGrupa);
         when(repozitorijum.getAll(new Raspored())).thenReturn(listaRasporeda);
 
-        ucitajListuTreningGrupe.izvrsiOperaciju(new Object());
+        ucitajListuTreningGrupe.izvrsiOperaciju(new TreningGrupa());
 
         assertEquals(listaTreningGrupa, ucitajListuTreningGrupe.getListaTreningGrupa());
         assertEquals(listaRasporeda, ucitajListuTreningGrupe.getListaRasporeda());
@@ -68,7 +68,7 @@ public class UcitajListuTreningGrupeTest {
         when(repozitorijum.getAll(new TreningGrupa())).thenThrow(new Exception("Greška u repozitorijumu"));
 
         Exception exception = assertThrows(Exception.class, () -> {
-            ucitajListuTreningGrupe.izvrsiOperaciju(new Object());
+            ucitajListuTreningGrupe.izvrsiOperaciju(new TreningGrupa());
         });
 
         assertEquals("Greška u repozitorijumu", exception.getMessage());

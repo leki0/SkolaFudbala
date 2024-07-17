@@ -45,7 +45,7 @@ public class UcitajListuFudbaleraTest {
 
         when(repozitorijum.getAll(new Fudbaler())).thenReturn(listaFudbaleraIzBaze);
 
-        ucitajListuFudbalera.izvrsiOperaciju(new Object());
+        ucitajListuFudbalera.izvrsiOperaciju(new Fudbaler());
 
         assertEquals(listaFudbaleraIzBaze, ucitajListuFudbalera.getListaFudbalera());
         verify(repozitorijum, times(1)).getAll(new Fudbaler());
